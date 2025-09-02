@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TECRA (Temporary Craft) — Craft Your Moment. Build Your Presence.</title>
+  <meta name="description" content="TECRA menyediakan template landing page elegan untuk undangan pernikahan dan website UMKM. Cepat, praktis, modern." />
+
+  <!-- STYLE -->
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#0a0a0a;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --brand:#111827;
+      --radius:16px;
+      --shadow:0 8px 24px rgba(0,0,0,.06);
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin-inline:auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);z-index:50}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .logo svg{width:32px;height:32px}
+    .nav a{font-weight:600;color:#1f2937;opacity:.9}
+    .nav .links{display:flex;gap:20px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:700;transition:transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.primary{background:var(--ink);color:white;border-color:var(--ink)}
+    .btn.ghost{background:white}
+
+    /* HERO */
+    .hero{padding:72px 24px}
+    .hero .wrap{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .kicker{font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-size:.82rem}
+    .title{font-size:clamp(36px,4.6vw,64px);line-height:1.05;margin:.35em 0;font-weight:900;letter-spacing:-.02em;color:#2563eb;}
+    .subtitle{font-size:clamp(16px,2.2vw,20px);color:#374151;max-width:60ch}
+    .cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+    .hero-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .mascot{aspect-ratio:1/1;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;background:#fff}
+    .mascot img{width:90%;height:auto;object-fit:contain}
+
+    /* SHOWCASE */
+    .section{padding:68px 24px;border-top:1px solid var(--line)}
+    .section h2{font-size:clamp(28px,3.2vw,40px);margin:0 0 16px 0}
+    .lead{color:#374151;max-width:70ch}
+    .grid{margin-top:28px;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .card{grid-column:span 6;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card .media{aspect-ratio:16/9;background:linear-gradient(180deg,#fafafa,#f5f5f5)}
+    .card .body{padding:20px}
+    .tag{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.8rem;color:#374151;background:#fff}
+    .card h3{margin:10px 0 6px 0;font-size:1.35rem}
+    .meta{color:var(--muted);font-size:.92rem}
+    .card .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:24px}
+    .feature{grid-column:span 4;border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff;box-shadow:var(--shadow)}
+    .feature h4{margin:8px 0 6px 0;font-size:1.15rem}
+    .feature p{margin:0;color:#374151}
+
+    /* TESTIMONIALS */
+    .quotes{margin-top:22px;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .quote{grid-column:span 6;border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff;box-shadow:var(--shadow)}
+    .quote p{font-size:1.05rem;margin:0 0 10px 0}
+    .quote .who{color:var(--muted);font-weight:700}
+
+    /* CTA Closing */
+    .closing{display:grid;grid-template-columns:1fr;place-items:center;text-align:center;padding:84px 24px}
+    .closing .title{margin-bottom:.25em}
+    .closing .subtitle{max-width:60ch;margin-inline:auto}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--line);padding:32px 24px;color:#4b5563}
+    .foot{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+    .foot .menu{display:flex;gap:16px;flex-wrap:wrap}
+
+    /* RESPONSIVE */
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr;gap:28px}
+      .card{grid-column:span 12}
+      .feature{grid-column:span 12}
+      .quote{grid-column:span 12}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">
+      <!-- Simple TECRA mark -->
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" stroke="black" stroke-width="4"/>
+        <circle cx="32" cy="26" r="8" stroke="black" stroke-width="4"/>
+        <rect x="18" y="36" width="28" height="10" rx="5" stroke="black" stroke-width="4"/>
+      </svg>
+      <span>TECRA</span>
+    </div>
+    <div class="links">
+      <a href="#templates">Template</a>
+      <a href="#features">Keunggulan</a>
+      <a href="#testi">Testimoni</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn ghost" href="#demo">Lihat Demo</a>
+      <a class="btn primary" href="#mulai">Mulai Sekarang</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="wrap container">
+      <div>
+        <div class="kicker">Temporary Craft</div>
+        <h1 class="title">Craft Your Moment.<br/>Build Your Presence.</h1>
+        <p class="subtitle">
+          Buat undangan pernikahan digital yang elegan, atau website UMKM yang profesional — cepat, praktis, dan penuh gaya, tanpa perlu coding.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#mulai">Coba Template Gratis</a>
+          <a class="btn" href="#demo">Lihat Demo</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mascot">
+          <!-- Ganti src di bawah ke file maskot hitam-putih kamu -->
+          <!-- contoh: images/tecra-mascot.png -->
+          <img src="images/tecra-mascot.png" alt="Maskot TECRA membaca buku bertuliskan TECRA" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SHOWCASE -->
+  <section class="section container" id="templates">
+    <h2>Satu Platform, Dua Kebutuhan</h2>
+    <p class="lead">Pilih template untuk momen spesial atau untuk tumbuhkan bisnismu — semuanya estetik, cepat, dan mudah dikustomisasi.</p>
+
+    <div class="grid">
+      <!-- Wedding -->
+      <article class="card">
+        <div class="media">
+          <!-- Ganti ke screenshot template wedding -->
+          <img src="images/template-wedding.jpg" alt="Preview Template Undangan Pernikahan TECRA" />
+        </div>
+        <div class="body">
+          <span class="tag">Undangan Pernikahan</span>
+          <h3>Elegan & Personal</h3>
+          <div class="meta">Hitungan menit, undanganmu siap dibagikan via tautan.</div>
+          <div class="actions">
+            <a class="btn primary" href="#mulai">Pilih Template</a>
+            <a class="btn ghost" href="#demo-wedding">Lihat Demo</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- UMKM -->
+      <article class="card">
+        <div class="media">
+          <!-- Ganti ke screenshot template UMKM -->
+          <img src="images/template-umkm.jpg" alt="Preview Template Website UMKM TECRA" />
+        </div>
+        <div class="body">
+          <span class="tag">Website UMKM</span>
+          <h3>Profesional & Ringan</h3>
+          <div class="meta">Tampilkan produk, layanan, dan kontak dengan tampilan modern.</div>
+          <div class="actions">
+            <a class="btn primary" href="#mulai">Pilih Template</a>
+            <a class="btn ghost" href="#demo-umkm">Lihat Demo</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section container" id="features">
+    <h2>Kenapa Memilih TECRA?</h2>
+    <p class="lead">Desain rapi, performa kencang, dan pengalaman setup super mudah.</p>
+
+    <div class="features">
+      <div class="feature">
+        <h4>🎨 Desain Modern</h4>
+        <p>Tipografi rapi, komposisi bersih, dan estetika kontemporer yang sedap dipandang.</p>
+      </div>
+      <div class="feature">
+        <h4>⚡ Cepat & Praktis</h4>
+        <p>Pilih template, ganti konten, langsung tayang — tanpa ribet dan tanpa coding.</p>
+      </div>
+      <div class="feature">
+        <h4>🔒 Andal & Ringan</h4>
+        <p>Responsif di semua perangkat, loading ngebut, dan arsitektur yang stabil.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section container" id="testi">
+    <h2>Dipercaya Pengguna</h2>
+    <p class="lead">Untuk momen spesial dan bisnis nyata.</p>
+
+    <div class="quotes">
+      <div class="quote">
+        <p>“Undangan digital kami terasa personal dan elegan. Prosesnya super cepat!”</p>
+        <div class="who">— Dina & Arif</div>
+      </div>
+      <div class="quote">
+        <p>“Website UMKM saya kelihatan profesional tanpa pusing. TECRA ngasih solusi yang pas.”</p>
+        <div class="who">— Sari, Kopi Nusantara</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" id="mulai">
+    <h2 class="title">Mulai Ceritamu bersama TECRA.</h2>
+    <p class="subtitle">Apapun momennya — pernikahan, atau bisnis UMKM — TECRA hadir untuk mewujudkan website impianmu.</p>
+    <div class="cta">
+      <a class="btn primary" href="#signup">Mulai Sekarang</a>
+      <a class="btn" href="#pricing">Lihat Harga</a>
+    </div>
+  </section>
+
+  <!-- FAQ (ringkas) -->
+  <section class="section container" id="faq">
+    <h2>Pertanyaan Umum</h2>
+    <div class="features">
+      <div class="feature">
+        <h4>Apakah perlu coding?</h4>
+        <p>Tidak. Semua template bisa diatur dari panel konfigurasi sederhana.</p>
+      </div>
+      <div class="feature">
+        <h4>Bisa custom domain?</h4>
+        <p>Bisa. Hubungkan domain kamu sendiri atau gunakan subdomain TECRA.</p>
+      </div>
+      <div class="feature">
+        <h4>Bagaimana supportnya?</h4>
+        <p>Kami sediakan panduan, chat bantuan, dan template siap pakai untuk start cepat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot">
+      <div class="logo" aria-label="TECRA Footer">
+        <strong>TECRA</strong><span style="color:#6b7280">(Temporary Craft)</span>
+      </div>
+      <div class="menu">
+        <a href="#templates">Template</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Kontak</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container" style="padding-top:12px;color:#9ca3af;font-size:.9rem">
+      © 2025 TECRA (Temporary Craft). All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Minimal JS: smooth scroll for same-page anchors -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1 && document.querySelector(id)){
+          e.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
