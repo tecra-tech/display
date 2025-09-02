@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TECRA (Temporary Craft) — Craft Your Moment. Build Your Presence.</title>
-  <meta name="description" content="TECRA menyediakan template landing page elegan untuk undangan pernikahan dan website UMKM. Cepat, praktis, modern, responsif.">
+  <meta name="description" content="TECRA menyediakan template landing page elegan untuk undangan pernikahan dan website UMKM. Cepat, praktis, modern, dan responsif.">
+  <meta name="color-scheme" content="light">
 
   <style>
     :root{
@@ -16,23 +17,25 @@
       --shadow:0 10px 30px rgba(0,0,0,.06);
       --max:1200px;
       --brand-blue:#2563eb; /* judul biru */
+      --accent:#111827;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin-inline:auto;padding:clamp(16px,3vw,24px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(12px,3vw,24px);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);z-index:50}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(12px,3vw,24px);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);z-index:50;transition:box-shadow .2s ease}
+    .nav.is-scrolled{box-shadow:0 6px 24px rgba(0,0,0,.08)}
     .logo{display:flex;align-items:center;gap:10px;font-weight:800}
     .logo svg{width:28px;height:28px}
     .links{display:flex;gap:16px;align-items:center}
     .links a{font-weight:600;color:#1f2937;opacity:.9}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:700;transition:transform .15s ease, box-shadow .15s ease}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:700;transition:transform .15s ease, box-shadow .15s ease, background .15s}
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
     .btn.primary{background:var(--ink);color:white;border-color:var(--ink)}
     .btn.ghost{background:white}
-
-    /* mobile nav hide some links */
     @media (max-width:740px){ .links a:not(.btn){display:none} }
 
     /* HERO */
@@ -45,22 +48,12 @@
     .hero-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(14px,2.4vw,24px);box-shadow:var(--shadow)}
     .mascot{aspect-ratio:1/1;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;background:#fff}
     .mascot img{width:92%;height:auto;object-fit:contain}
-
     @media (max-width:960px){ .wrap{grid-template-columns:1fr} }
 
     /* SECTION BASE */
     .section{padding:clamp(40px,7vw,72px) clamp(12px,3vw,24px);border-top:1px solid var(--line)}
     .section h2{font-size:clamp(24px,5.2vw,40px);margin:0 0 10px 0}
     .lead{color:#374151;max-width:70ch}
-
-    /* CARDS (for non-carousel pieces if needed) */
-    .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
-    .card .media{aspect-ratio:16/9;background:linear-gradient(180deg,#fafafa,#f5f5f5)}
-    .card .body{padding:18px}
-    .tag{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.8rem;color:#374151;background:#fff}
-    .card h3{margin:10px 0 6px 0;font-size:1.15rem}
-    .meta{color:var(--muted);font-size:.92rem}
-    .card .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 
     /* FEATURES */
     .features{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:16px}
@@ -90,23 +83,43 @@
     .carousel{margin-top:20px;position:relative}
     .carousel-viewport{overflow:hidden}
     .carousel-track{display:flex;gap:16px;touch-action:pan-y;will-change:transform;transition:transform .35s ease}
-    .slide{min-width:calc(100% - 2px); /* default 1 per view */ flex:0 0 auto}
+
+    /* default mobile: tampilkan 1.2 slide */
+    .slide{min-width:calc(85% - 2px); flex:0 0 auto}
     .slide .card{height:100%}
-    .carousel-nav{display:flex;justify-content:space-between;gap:8px;margin-top:12px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card .media{aspect-ratio:3/2;background:linear-gradient(180deg,#fafafa,#f5f5f5)}
+    .card .body{padding:18px}
+    .tag{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.8rem;color:#374151;background:#fff}
+    .card h3{margin:10px 0 6px 0;font-size:1.15rem}
+    .meta{color:var(--muted);font-size:.92rem}
+    .card .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+
+    .carousel-nav{display:flex;justify-content:space-between;gap:8px;margin-top:12px;align-items:center}
     .arrow{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:800}
     .dots{display:flex;gap:8px;align-items:center}
     .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
     .dot.active{background:#111827}
 
-    /* slides per view at breakpoints */
-    @media (min-width:640px){ .slide{min-width:calc(50% - 8px)} }  /* 2 per view */
-    @media (min-width:1024px){ .slide{min-width:calc(33.333% - 10.7px)} } /* 3 per view */
+    /* tablet: ~2.2 per view */
+    @media (min-width:640px){ .slide{min-width:calc(45% - 8px)} }
+
+    /* desktop: ~3–4 per view */
+    @media (min-width:1024px){ .slide{min-width:calc(28% - 10.7px)} }
+
+    /* ====== ANIMATIONS ====== */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.is-visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{transition:none}
+      .carousel-track{transition:none}
+    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav" id="nav">
     <div class="logo">
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="32" cy="32" r="30" stroke="black" stroke-width="4"/>
@@ -126,9 +139,9 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero" id="home">
+  <header class="hero">
     <div class="wrap">
-      <div>
+      <div class="reveal">
         <div class="kicker">Temporary Craft</div>
         <h1 class="title">Craft Your Moment.<br/>Build Your Presence.</h1>
         <p class="subtitle">
@@ -136,14 +149,14 @@
         </p>
         <div class="cta">
           <a class="btn primary" href="#mulai">Coba Template Gratis</a>
-          <a class="btn" href="#demo">Lihat Demo</a>
+          <a class="btn" href="#templates">Lihat Template</a>
         </div>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card reveal">
         <div class="mascot">
           <!-- Ganti src ke file maskot kamu -->
-          <img src="images/tecra-mascot.png" alt="Maskot TECRA membaca buku bertuliskan TECRA" />
+          <img src="images/tecra-mascot.png" loading="lazy" alt="Maskot TECRA membaca buku bertuliskan TECRA" />
         </div>
         <div style="margin-top:10px;color:#4b5563;font-size:.95rem">
           Ikon karakter TECRA — fun, friendly, dan siap menemani proyekmu.
@@ -154,18 +167,17 @@
 
   <!-- SHOWCASE: CAROUSEL -->
   <section class="section container" id="templates">
-    <h2>Satu Platform, Dua Kebutuhan</h2>
-    <p class="lead">Geser untuk melihat koleksi template. Pilih yang kamu suka, edit, langsung tayang.</p>
+    <h2 class="reveal">Satu Platform, Dua Kebutuhan</h2>
+    <p class="lead reveal">Geser untuk melihat koleksi template. Pilih yang kamu suka, edit, langsung tayang.</p>
 
-    <div class="carousel" aria-roledescription="carousel">
+    <div class="carousel reveal" aria-roledescription="carousel">
       <div class="carousel-viewport">
         <div class="carousel-track" id="track">
-
           <!-- Slide 1: Wedding -->
           <div class="slide" aria-label="1 / n">
             <article class="card">
               <div class="media">
-                <img src="images/template-wedding.jpg" alt="Template Undangan Pernikahan TECRA - Elegan" />
+                <img src="images/template-wedding.jpg" loading="lazy" alt="Template Undangan Pernikahan TECRA - Elegan" />
               </div>
               <div class="body">
                 <span class="tag">Undangan Pernikahan</span>
@@ -183,7 +195,7 @@
           <div class="slide" aria-label="2 / n">
             <article class="card">
               <div class="media">
-                <img src="images/template-umkm.jpg" alt="Template Website UMKM TECRA - Profesional" />
+                <img src="images/template-umkm.jpg" loading="lazy" alt="Template Website UMKM TECRA - Profesional" />
               </div>
               <div class="body">
                 <span class="tag">Website UMKM</span>
@@ -197,11 +209,11 @@
             </article>
           </div>
 
-          <!-- Duplikasi contoh jika template banyak -->
+          <!-- Tambah contoh lagi -->
           <div class="slide" aria-label="3 / n">
             <article class="card">
               <div class="media">
-                <img src="images/template-wedding-2.jpg" alt="Template Undangan Pernikahan Varian 2" />
+                <img src="images/template-wedding-2.jpg" loading="lazy" alt="Template Undangan Pernikahan Varian 2" />
               </div>
               <div class="body">
                 <span class="tag">Undangan Pernikahan</span>
@@ -218,7 +230,7 @@
           <div class="slide" aria-label="4 / n">
             <article class="card">
               <div class="media">
-                <img src="images/template-umkm-2.jpg" alt="Template UMKM Varian 2" />
+                <img src="images/template-umkm-2.jpg" loading="lazy" alt="Template UMKM Varian 2" />
               </div>
               <div class="body">
                 <span class="tag">Website UMKM</span>
@@ -245,32 +257,32 @@
 
   <!-- FEATURES -->
   <section class="section container" id="features">
-    <h2>Kenapa Memilih TECRA?</h2>
-    <p class="lead">Desain rapi, performa kencang, dan pengalaman setup super mudah.</p>
+    <h2 class="reveal">Kenapa Memilih TECRA?</h2>
+    <p class="lead reveal">Desain rapi, performa kencang, dan pengalaman setup super mudah.</p>
 
     <div class="features">
-      <div class="feature"><h4>🎨 Desain Modern</h4><p>Tipografi rapi, komposisi bersih, estetika kontemporer.</p></div>
-      <div class="feature"><h4>⚡ Cepat & Praktis</h4><p>Pilih template, ganti konten, langsung tayang — tanpa coding.</p></div>
-      <div class="feature"><h4>🔒 Andal & Ringan</h4><p>Responsif di semua perangkat, loading ngebut, arsitektur stabil.</p></div>
+      <div class="feature reveal"><h4>🎨 Desain Modern</h4><p>Tipografi rapi, komposisi bersih, estetika kontemporer.</p></div>
+      <div class="feature reveal"><h4>⚡ Cepat & Praktis</h4><p>Pilih template, ganti konten, langsung tayang — tanpa coding.</p></div>
+      <div class="feature reveal"><h4>🔒 Andal & Ringan</h4><p>Responsif di semua perangkat, loading ngebut, arsitektur stabil.</p></div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
   <section class="section container" id="testi">
-    <h2>Dipercaya Pengguna</h2>
-    <p class="lead">Untuk momen spesial dan bisnis nyata.</p>
+    <h2 class="reveal">Dipercaya Pengguna</h2>
+    <p class="lead reveal">Untuk momen spesial dan bisnis nyata.</p>
 
     <div class="quotes">
-      <div class="quote"><p>“Undangan digital kami terasa personal dan elegan. Prosesnya super cepat!”</p><div class="who">— Dina & Arif</div></div>
-      <div class="quote"><p>“Website UMKM saya kelihatan profesional tanpa pusing. TECRA ngasih solusi yang pas.”</p><div class="who">— Sari, Kopi Nusantara</div></div>
+      <div class="quote reveal"><p>“Undangan digital kami terasa personal dan elegan. Prosesnya super cepat!”</p><div class="who">— Dina & Arif</div></div>
+      <div class="quote reveal"><p>“Website UMKM saya kelihatan profesional tanpa pusing. TECRA ngasih solusi yang pas.”</p><div class="who">— Sari, Kopi Nusantara</div></div>
     </div>
   </section>
 
   <!-- CLOSING -->
   <section class="closing" id="mulai">
-    <h2 class="title">Mulai Ceritamu bersama TECRA.</h2>
-    <p class="subtitle">Apapun momennya — pernikahan atau bisnis UMKM — TECRA hadir untuk mewujudkan website impianmu.</p>
-    <div class="cta">
+    <h2 class="title reveal">Mulai Ceritamu bersama TECRA.</h2>
+    <p class="subtitle reveal">Apapun momennya — pernikahan atau bisnis UMKM — TECRA hadir untuk mewujudkan website impianmu.</p>
+    <div class="cta reveal">
       <a class="btn primary" href="#signup">Mulai Sekarang</a>
       <a class="btn" href="#pricing">Lihat Harga</a>
     </div>
@@ -278,11 +290,11 @@
 
   <!-- FAQ -->
   <section class="section container" id="faq">
-    <h2>Pertanyaan Umum</h2>
+    <h2 class="reveal">Pertanyaan Umum</h2>
     <div class="features">
-      <div class="feature"><h4>Perlu coding?</h4><p>Tidak. Semua template bisa diatur dari panel sederhana.</p></div>
-      <div class="feature"><h4>Custom domain?</h4><p>Bisa. Hubungkan domain kamu atau gunakan subdomain TECRA.</p></div>
-      <div class="feature"><h4>Bagaimana support?</h4><p>Panduan, chat bantuan, dan template siap pakai untuk start cepat.</p></div>
+      <div class="feature reveal"><h4>Perlu coding?</h4><p>Tidak. Semua template bisa diatur dari panel sederhana.</p></div>
+      <div class="feature reveal"><h4>Custom domain?</h4><p>Bisa. Hubungkan domain kamu atau gunakan subdomain TECRA.</p></div>
+      <div class="feature reveal"><h4>Bagaimana support?</h4><p>Panduan, chat bantuan, dan template siap pakai untuk start cepat.</p></div>
     </div>
   </section>
 
@@ -297,8 +309,13 @@
     <div class="container" style="padding-top:10px;color:#9ca3af;font-size:.9rem">© 2025 TECRA (Temporary Craft). All rights reserved.</div>
   </footer>
 
-  <!-- JS: smooth scroll + Carousel -->
+  <!-- JS: sticky nav, smooth scroll, reveal, carousel (swipe/keyboard/autoplay) -->
   <script>
+    // Sticky nav shadow
+    const nav = document.getElementById('nav');
+    const onScroll = ()=> nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll(); window.addEventListener('scroll', onScroll);
+
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
@@ -310,7 +327,15 @@
       });
     });
 
-    // Carousel
+    // Reveal on view
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(el=>{
+        if(el.isIntersecting){ el.target.classList.add('is-visible'); io.unobserve(el.target); }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // ===== Carousel =====
     (function(){
       const track = document.getElementById('track');
       const slides = Array.from(track.children);
@@ -319,50 +344,52 @@
       const dotsWrap = document.getElementById('dots');
 
       let index = 0;
-      let startX = 0, currentX = 0, isDown = false;
+      let startX = 0, currentX = 0, isDown = false, isHover = false;
+      let autoplayTimer = null;
 
       function slideWidth(){ return slides[0].getBoundingClientRect().width + 16; } // 16 = gap
-      function maxIndex(){ return Math.max(0, slides.length - perView()); }
       function perView(){
         const w = track.parentElement.clientWidth;
+        if (w >= 1280) return 4;
         if (w >= 1024) return 3;
-        if (w >= 640) return 2;
+        if (w >= 640)  return 2;
         return 1;
       }
+      function maxIndex(){ return Math.max(0, slides.length - perView()); }
+      function clamp(){ index = Math.max(0, Math.min(index, maxIndex())); }
 
       function update(){
         const offset = -index * slideWidth();
         track.style.transform = `translateX(${offset}px)`;
         // dots
-        dotsWrap.querySelectorAll('.dot').forEach((d,i)=>{
-          d.classList.toggle('active', i===index);
-        });
+        dotsWrap.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===index));
         prev.disabled = index===0;
         next.disabled = index>=maxIndex();
       }
 
-      // build dots (one per "page", not per slide)
       function buildDots(){
         dotsWrap.innerHTML='';
         for(let i=0;i<=maxIndex();i++){
           const d=document.createElement('div');
           d.className='dot';
-          d.addEventListener('click',()=>{ index=i; update(); });
+          d.addEventListener('click',()=>{ index=i; update(); restartAutoplay(); });
           dotsWrap.appendChild(d);
         }
       }
 
-      function clamp(){
-        if(index<0) index=0;
-        if(index>maxIndex()) index=maxIndex();
-      }
+      // Controls
+      next.addEventListener('click', ()=>{ index++; clamp(); update(); restartAutoplay(); });
+      prev.addEventListener('click', ()=>{ index--; clamp(); update(); restartAutoplay(); });
 
-      next.addEventListener('click', ()=>{ index++; clamp(); update(); });
-      prev.addEventListener('click', ()=>{ index--; clamp(); update(); });
+      // Keyboard (left/right)
+      window.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowRight'){ index++; clamp(); update(); restartAutoplay(); }
+        if(e.key==='ArrowLeft'){ index--; clamp(); update(); restartAutoplay(); }
+      });
 
-      // drag / swipe
+      // Drag / Swipe
       const viewport = track.parentElement;
-      viewport.addEventListener('pointerdown', (e)=>{ isDown=true; startX=e.clientX; track.style.transition='none'; });
+      viewport.addEventListener('pointerdown', (e)=>{ isDown=true; startX=e.clientX; currentX=startX; track.style.transition='none'; });
       window.addEventListener('pointermove', (e)=>{
         if(!isDown) return;
         currentX=e.clientX;
@@ -372,20 +399,31 @@
       });
       window.addEventListener('pointerup', ()=>{
         if(!isDown) return;
-        isDown=false;
-        track.style.transition='';
+        isDown=false; track.style.transition='';
         const delta = currentX - startX;
-        if(Math.abs(delta) > 60){
-          if(delta<0) index++; else index--;
-        }
-        clamp(); update();
+        if(Math.abs(delta) > 60){ if(delta<0) index++; else index--; }
+        clamp(); update(); restartAutoplay();
       });
 
-      // resize recompute
+      // Autoplay (pause on hover/drag & reduced motion)
+      function autoplay(){
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(()=>{
+          if(isDown || isHover) return;
+          index = (index >= maxIndex()) ? 0 : index + 1;
+          update();
+        }, 4000);
+      }
+      function restartAutoplay(){ clearInterval(autoplayTimer); autoplay(); }
+      viewport.addEventListener('mouseenter', ()=>{ isHover=true; });
+      viewport.addEventListener('mouseleave', ()=>{ isHover=false; });
+
+      // Resize recompute
       window.addEventListener('resize', ()=>{ buildDots(); clamp(); update(); });
 
-      // init
-      buildDots(); update();
+      // Init
+      buildDots(); clamp(); update(); autoplay();
     })();
   </script>
 </body>
