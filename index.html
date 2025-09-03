@@ -1,474 +1,210 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TECRA (Temporary Craft) — Craft Your Moment. Build Your Presence.</title>
-  <meta name="description" content="TECRA menyediakan template landing page elegan untuk undangan pernikahan dan website UMKM. Cepat, praktis, modern, dan responsif.">
-  <meta name="color-scheme" content="light">
-  <style>
-    :root{
-      --bg:#ffffff;
-      --ink:#0a0a0a;
-      --muted:#6b7280;
-      --line:#e5e7eb;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.06);
-      --max:1200px;
-      --brand-blue:#2563eb; /* judul biru */
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial}
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max);margin-inline:auto;padding:clamp(16px,3vw,24px)}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TECRA — Undangan Digital Elegan</title>
+<style>
+  :root{
+    --bg:#ffffff; --ink:#0b1324; --muted:#6b7280; --line:#e5e7eb;
+    --brand:#2563eb; --radius:14px; --shadow:0 12px 30px rgba(0,0,0,.06);
+    --max:1200px;
+    --footer-bg:#0b0f14; --footer-ink:#f5f7fa; --footer-dim:#c9d1d9; --footer-line:#202734;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
+  img{max-width:100%;display:block} a{text-decoration:none;color:inherit}
 
-    /* NAV */
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(12px,3vw,24px);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);z-index:50;transition:box-shadow .2s}
-    .nav.is-scrolled{box-shadow:0 6px 24px rgba(0,0,0,.08)}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800}
-    .logo svg{width:28px;height:28px}
-    .links{display:flex;gap:16px;align-items:center}
-    .links a{font-weight:600;color:#1f2937;opacity:.9}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:700;transition:.15s ease;transition-property:transform,box-shadow,background}
-    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-    .btn.primary{background:var(--ink);color:white;border-color:var(--ink)}
-    .btn.ghost{background:white}
-    @media (max-width:740px){ .links a:not(.btn){display:none} }
+  /* HEADER */
+  .header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
+  .header .row{max-width:var(--max);margin:auto;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;min-height:56px}
+  .logo{font-weight:900;color:var(--brand)} .logo span{color:#111827}
+  .nav{display:flex;gap:16px;align-items:center}
+  .nav a{font-weight:600;color:#111827;opacity:.9;border-radius:10px;padding:8px 10px}
+  .nav a.active{background:#eef2ff}
+  .menu-btn{display:none;border:1px solid #dbe2ea;background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}
+  .menu-btn .bars{width:20px;height:2px;background:#1f2937;position:relative}
+  .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;width:20px;height:2px;background:#1f2937}
+  .menu-btn .bars::before{top:-6px}.menu-btn .bars::after{top:6px}
+  .mobile-wrap{position:absolute;top:60px;right:10px;width:min(88vw,320px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;transform:scale(.98);opacity:0;pointer-events:none;transition:.18s}
+  .mobile-wrap.open{transform:scale(1);opacity:1;pointer-events:auto}
+  .mobile-menu{display:flex;flex-direction:column}
+  .mobile-menu a{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:600}
+  @media(max-width:860px){.nav{display:none}.menu-btn{display:inline-flex}}
 
-    /* HERO */
-    .hero{padding:clamp(32px,6vw,80px) clamp(12px,3vw,24px)}
-    .wrap{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,40px);align-items:center}
-    .kicker{font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-size:.82rem}
-    .title{color:var(--brand-blue);font-size:clamp(28px,7vw,56px);line-height:1.05;margin:.35em 0;font-weight:900;letter-spacing:-.02em}
-    .subtitle{font-size:clamp(15px,3.4vw,20px);color:#374151;max-width:60ch}
-    .cta{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-    .hero-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(14px,2.4vw,24px);box-shadow:var(--shadow)}
-    .mascot{aspect-ratio:1/1;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;background:#fff}
-    .mascot img{width:92%;height:auto;object-fit:contain}
-    @media (max-width:960px){ .wrap{grid-template-columns:1fr} }
+  /* HERO */
+  .hero{padding:48px 16px;background:#fff}
+  .hero .wrap{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center}
+  .hero h1{font-size:clamp(26px,6vw,44px);color:var(--brand);margin:6px 0}
+  .hero p{color:#374151;max-width:60ch;margin:0 0 16px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;font-weight:700;border:1px solid var(--ink)}
+  .btn.primary{background:var(--ink);color:#fff}
+  .btn.ghost{background:#fff;color:var(--ink)}
+  .mascot{display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);border-radius:16px;background:#fff;min-height:240px}
+  .mascot img{width:92%;height:auto;object-fit:contain}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.mascot{min-height:200px}}
 
-    /* SECTION */
-    .section{padding:clamp(40px,7vw,72px) clamp(12px,3vw,24px);border-top:1px solid var(--line)}
-    .section h2{font-size:clamp(24px,5.2vw,40px);margin:0 0 10px 0}
-    .lead{color:#374151;max-width:70ch}
+  /* SECTIONS */
+  .section{padding:48px 16px;border-top:1px solid var(--line)}
+  .container{max-width:var(--max);margin:auto}
+  .section h2{text-align:center;font-size:clamp(22px,4.6vw,36px);margin:0 0 8px}
+  .lead{text-align:center;color:#374151;max-width:70ch;margin:0 auto 26px}
 
-    /* FEATURES */
-    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:16px}
-    .feature{grid-column:span 4;border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;box-shadow:var(--shadow)}
-    .feature h4{margin:6px 0 6px 0;font-size:1.05rem}
-    .feature p{margin:0;color:#374151}
-    @media (max-width:900px){ .feature{grid-column:span 12} }
+  /* CAROUSEL */
+  .carousel{max-width:var(--max);margin:0 auto}
+  .carousel-viewport{overflow:hidden}
+  .carousel-track{display:flex;gap:16px;transition:transform .35s ease}
+  .slide{min-width:72%;flex:0 0 auto}
+  .slide .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .slide .card .media{height:clamp(220px,40vw,320px);overflow:hidden;background:#fff}
+  .slide .card .media img{width:100%;height:100%;object-fit:cover}
+  .slide .card .body{padding:16px}
+  .meta{color:#6b7280;font-size:.92rem;margin:4px 0 12px}
+  .carousel-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+  .arrow{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer}
+  .dots{display:flex;gap:8px}
+  .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
+  .dot.active{background:#111827}
+  @media(min-width:640px){.slide{min-width:44%}}
+  @media(min-width:1024px){.slide{min-width:28%}}
 
-    /* TESTIMONIALS */
-    .quotes{margin-top:16px;display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .quote{grid-column:span 6;border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff;box-shadow:var(--shadow)}
-    .quote p{font-size:1.02rem;margin:0 0 8px 0}
-    .quote .who{color:#6b7280;font-weight:700}
-    @media (max-width:900px){ .quote{grid-column:span 12} }
+  /* GRID CARDS */
+  .show-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .card .body{padding:16px}
 
-    /* CLOSING */
-    .closing{display:grid;grid-template-columns:1fr;place-items:center;text-align:center;padding:clamp(52px,8vw,96px) clamp(12px,3vw,24px)}
-    .closing .title{margin-bottom:.25em}
-    .closing .subtitle{max-width:60ch;margin-inline:auto}
-
-    /* FOOTER */
-    footer{border-top:1px solid var(--line);padding:28px clamp(12px,3vw,24px);color:#4b5563}
-    .foot{max-width:var(--max);margin:auto;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
-    .foot .menu{display:flex;gap:14px;flex-wrap:wrap}
-
-    /* ===== CAROUSEL (fit-in images & compact mobile) ===== */
-    .carousel{margin-top:20px;position:relative}
-    .carousel-viewport{overflow:hidden}
-    .carousel-track{display:flex;gap:16px;touch-action:pan-y;will-change:transform;transition:transform .35s ease}
-
-    /* mobile: tampilkan ~1.45 slide (lebih mungil & enak di-swipe) */
-    .slide{min-width:calc(72% - 2px); flex:0 0 auto}
-    .slide .card{height:100%}
-
-    .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-    /* Wadah media dipaksa pendek & gambar selalu contain (fit-in) */
-    .card .media{
-      aspect-ratio:auto;
-      height:clamp(150px, 36vw, 240px);
-      display:flex;align-items:center;justify-content:center;
-      padding:8px;background:#fff;border-bottom:1px solid var(--line);
-    }
-    .card .media img{
-      max-width:100%;max-height:100%;
-      width:auto;height:auto;object-fit:contain !important;
-    }
-
-    .card .body{padding:16px}
-    .tag{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.78rem;color:#374151;background:#fff}
-    .card h3{margin:8px 0 4px 0;font-size:1.08rem}
-    .meta{color:#6b7280;font-size:.9rem}
-    .card .actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-
-    .carousel-nav{display:flex;justify-content:space-between;gap:8px;margin-top:12px;align-items:center}
-    .arrow{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:800}
-    .dots{display:flex;gap:8px;align-items:center}
-    .dot{width:8px;height:8px;border-radius:999px;background:#d1d5db}
-    .dot.active{background:#111827}
-
-    /* tablet: ~2.4 per view */
-    @media (min-width:640px){
-      .slide{min-width:calc(42% - 8px)}
-      .card .media{height:clamp(180px, 28vw, 260px)}
-    }
-    /* desktop: ~3–4 per view */
-    @media (min-width:1024px){
-      .slide{min-width:calc(26% - 10.7px)}
-      .card .media{height:clamp(200px, 22vw, 300px)}
-    }
-    /* ekstra kompak di layar kecil */
-    @media (max-width:480px){
-      .slide{min-width:calc(62% - 2px)}
-      .card .body{padding:12px}
-      .card h3{font-size:1rem}
-      .meta{font-size:.85rem}
-      .tag{transform:scale(.92)}
-      .card .media{height:clamp(140px, 34vw, 210px)}
-    }
-
-    /* Reveal animation */
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.is-visible{opacity:1;transform:none}
-    @media (prefers-reduced-motion:reduce){
-      .reveal{transition:none}
-      .carousel-track{transition:none}
-    }
-  </style>
+  /* FOOTER */
+  .footer{background:var(--footer-bg);color:var(--footer-ink);border-top:1px solid var(--footer-line)}
+  .footer .wrap{max-width:var(--max);margin:auto;padding:44px 16px;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:26px}
+  .footer h4{margin:0 0 10px;font-size:1.05rem}
+  .footer p{color:var(--footer-dim);line-height:1.6}
+  .footer a{color:#e5e7eb}
+  .copyright{border-top:1px solid var(--footer-line);color:#9aa4b2;font-size:.92rem;padding:14px 16px;max-width:var(--max);margin:auto}
+  @media(max-width:960px){.footer .wrap{grid-template-columns:1fr 1fr}}
+  @media(max-width:580px){.footer .wrap{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="logo">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="32" cy="32" r="30" stroke="black" stroke-width="4"/>
-        <circle cx="32" cy="26" r="8" stroke="black" stroke-width="4"/>
-        <rect x="18" y="36" width="28" height="10" rx="5" stroke="black" stroke-width="4"/>
-      </svg>
-      <span>TECRA</span>
+<header class="header" id="header">
+  <div class="row">
+    <div class="logo">TECRA <span>Wedding</span></div>
+    <nav class="nav">
+      <a href="#template">Template</a><a href="#features">Keunggulan</a><a href="#testi">Testimoni</a><a href="#faq">FAQ</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn"><span class="bars"></span></button>
+    <div class="mobile-wrap" id="mobileMenu">
+      <nav class="mobile-menu">
+        <a href="#template">Template</a><a href="#features">Keunggulan</a><a href="#testi">Testimoni</a><a href="#faq">FAQ</a>
+      </nav>
     </div>
-    <div class="links">
-      <a href="#templates">Template</a>
-      <a href="#features">Keunggulan</a>
-      <a href="#testi">Testimoni</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn ghost" href="#templates">Lihat Template</a>
-      <a class="btn primary" href="#mulai">Mulai Sekarang</a>
-    </div>
-  </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="kicker">Temporary Craft</div>
-        <h1 class="title">Craft Your Moment.<br/>Build Your Presence.</h1>
-        <p class="subtitle">
-          Buat undangan pernikahan digital yang elegan, atau website UMKM yang profesional — cepat, praktis, dan penuh gaya, tanpa perlu coding.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="#mulai">Coba Template Gratis</a>
-          <a class="btn" href="#templates">Lihat Template</a>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Undangan Digital Elegan & Praktis</h1>
+      <p>Bikin undangan pernikahan profesional dalam hitungan menit. Pilih template, isi konten, langsung bagikan!</p>
+      <div class="cta"><a class="btn primary" href="#template">Pilih Template</a><a class="btn ghost" href="#demo">Lihat Demo</a></div>
+    </div>
+    <div class="mascot">
+      <img src="images/tecra-mascot.png" alt="Maskot TECRA" onerror="this.src='tecra-mascot.png';"/>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="template">
+  <h2>Pilihan Template</h2>
+  <p class="lead">Geser untuk melihat koleksi. Pilih yang kamu suka, edit, langsung tayang.</p>
+  <div class="carousel">
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="track">
+        <div class="slide">
+          <article class="card">
+            <div class="media"><img src="images/template-wedding.jpg" alt="Template 1"></div>
+            <div class="body"><h3>Elegan & Personal</h3><p class="meta">Undangan digital klasik.</p></div>
+          </article>
+        </div>
+        <div class="slide">
+          <article class="card">
+            <div class="media"><img src="images/template-wedding-2.jpg" alt="Template 2"></div>
+            <div class="body"><h3>Minimal & Hangat</h3><p class="meta">Desain tipografi premium.</p></div>
+          </article>
         </div>
       </div>
-
-      <div class="hero-card reveal">
-        <div class="mascot">
-          <!-- Ganti ke file maskot kamu -->
-          <img src="images/tecra-mascot.png" loading="lazy" alt="Maskot TECRA membaca buku bertuliskan TECRA" />
-        </div>
-      </div>
     </div>
-  </header>
-
-  <!-- SHOWCASE: CAROUSEL -->
-  <section class="section container" id="templates">
-    <h2 class="reveal">Satu Platform, Dua Kebutuhan</h2>
-    <p class="lead reveal">Geser untuk melihat koleksi template. Pilih yang kamu suka, edit, langsung tayang.</p>
-
-    <div class="carousel reveal" aria-roledescription="carousel">
-      <div class="carousel-viewport">
-        <div class="carousel-track" id="track">
-
-          <!-- Slide 1: Wedding -->
-          <div class="slide" aria-label="1 / n">
-            <article class="card">
-              <div class="media">
-                <img
-                  src="images/template-wedding.jpg"
-                  loading="lazy"
-                  alt="Template Undangan Pernikahan TECRA - Elegan"
-                  sizes="(max-width:640px) 66vw, (max-width:1024px) 42vw, 26vw"
-                />
-              </div>
-              <div class="body">
-                <span class="tag">Undangan Pernikahan</span>
-                <h3>Elegan & Personal</h3>
-                <div class="meta">Hitungan menit, undanganmu siap dibagikan via tautan.</div>
-                <div class="actions">
-                  <a class="btn primary" href="#mulai">Pilih Template</a>
-                  <a class="btn ghost" href="#demo-wedding">Lihat Demo</a>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Slide 2: UMKM -->
-          <div class="slide" aria-label="2 / n">
-            <article class="card">
-              <div class="media">
-                <img
-                  src="images/template-umkm.jpg"
-                  loading="lazy"
-                  alt="Template Website UMKM TECRA - Profesional"
-                  sizes="(max-width:640px) 66vw, (max-width:1024px) 42vw, 26vw"
-                />
-              </div>
-              <div class="body">
-                <span class="tag">Website UMKM</span>
-                <h3>Profesional & Ringan</h3>
-                <div class="meta">Tampilkan produk, layanan, dan kontak dengan tampilan modern.</div>
-                <div class="actions">
-                  <a class="btn primary" href="#mulai">Pilih Template</a>
-                  <a class="btn ghost" href="#demo-umkm">Lihat Demo</a>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="slide" aria-label="3 / n">
-            <article class="card">
-              <div class="media">
-                <img
-                  src="images/template-wedding-2.jpg"
-                  loading="lazy"
-                  alt="Template Undangan Pernikahan Varian 2"
-                  sizes="(max-width:640px) 66vw, (max-width:1024px) 42vw, 26vw"
-                />
-              </div>
-              <div class="body">
-                <span class="tag">Undangan Pernikahan</span>
-                <h3>Minimal & Hangat</h3>
-                <div class="meta">Tampilan bersih dengan tipografi premium.</div>
-                <div class="actions">
-                  <a class="btn primary" href="#mulai">Pilih Template</a>
-                  <a class="btn ghost" href="#demo-wedding-2">Lihat Demo</a>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="slide" aria-label="4 / n">
-            <article class="card">
-              <div class="media">
-                <img
-                  src="images/template-umkm-2.jpg"
-                  loading="lazy"
-                  alt="Template UMKM Varian 2"
-                  sizes="(max-width:640px) 66vw, (max-width:1024px) 42vw, 26vw"
-                />
-              </div>
-              <div class="body">
-                <span class="tag">Website UMKM</span>
-                <h3>Modern & Bersih</h3>
-                <div class="meta">Grid produk responsif, CTA jelas, dan performa ringan.</div>
-                <div class="actions">
-                  <a class="btn primary" href="#mulai">Pilih Template</a>
-                  <a class="btn ghost" href="#demo-umkm-2">Lihat Demo</a>
-                </div>
-              </div>
-            </article>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="carousel-nav">
-        <button class="arrow" id="prev" aria-label="Sebelumnya">‹</button>
-        <div class="dots" id="dots" aria-hidden="true"></div>
-        <button class="arrow" id="next" aria-label="Berikutnya">›</button>
-      </div>
+    <div class="carousel-nav">
+      <button class="arrow" id="prev">‹</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" id="next">›</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURES -->
-  <section class="section container" id="features">
-    <h2 class="reveal">Kenapa Memilih TECRA?</h2>
-    <p class="lead reveal">Desain rapi, performa kencang, dan pengalaman setup super mudah.</p>
-    <div class="features">
-      <div class="feature reveal"><h4>🎨 Desain Modern</h4><p>Tipografi rapi, komposisi bersih, estetika kontemporer.</p></div>
-      <div class="feature reveal"><h4>⚡ Cepat & Praktis</h4><p>Pilih template, ganti konten, langsung tayang — tanpa coding.</p></div>
-      <div class="feature reveal"><h4>🔒 Andal & Ringan</h4><p>Responsif di semua perangkat, loading ngebut, arsitektur stabil.</p></div>
+<section class="section" id="features">
+  <div class="container">
+    <h2>Kenapa TECRA?</h2>
+    <div class="show-grid">
+      <div class="card"><div class="body"><h3>🎨 Desain Modern</h3><p class="meta">Tipografi rapi, estetika kontemporer.</p></div></div>
+      <div class="card"><div class="body"><h3>⚡ Cepat & Praktis</h3><p class="meta">Pilih template, ganti konten, langsung tayang.</p></div></div>
+      <div class="card"><div class="body"><h3>🔒 Andal & Responsif</h3><p class="meta">Ringan, aman, tampil sempurna di semua perangkat.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section container" id="testi">
-    <h2 class="reveal">Dipercaya Pengguna</h2>
-    <p class="lead reveal">Untuk momen spesial dan bisnis nyata.</p>
-    <div class="quotes">
-      <div class="quote reveal"><p>“Undangan digital kami terasa personal dan elegan. Prosesnya super cepat!”</p><div class="who">— Dina & Arif</div></div>
-      <div class="quote reveal"><p>“Website UMKM saya kelihatan profesional tanpa pusing. TECRA ngasih solusi yang pas.”</p><div class="who">— Sari, Kopi Nusantara</div></div>
+<section class="section" id="testi">
+  <div class="container">
+    <h2>Dipercaya Pasangan</h2>
+    <div class="show-grid">
+      <div class="card"><div class="body"><p>“Undangan kami terasa personal dan elegan.”</p><p class="meta">— Dina & Arif</p></div></div>
+      <div class="card"><div class="body"><p>“Template-nya modern banget.”</p><p class="meta">— Rani & Budi</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CLOSING -->
-  <section class="closing" id="mulai">
-    <h2 class="title reveal">Mulai Ceritamu bersama TECRA.</h2>
-    <p class="subtitle reveal">Apapun momennya — pernikahan atau bisnis UMKM — TECRA hadir untuk mewujudkan website impianmu.</p>
-    <div class="cta reveal">
-      <a class="btn primary" href="#signup">Mulai Sekarang</a>
-      <a class="btn" href="#pricing">Lihat Harga</a>
+<section class="section" id="faq">
+  <div class="container">
+    <h2>Pertanyaan Umum</h2>
+    <div class="show-grid">
+      <div class="card"><div class="body"><h3>Perlu coding?</h3><p class="meta">Tidak, semua bisa diatur dari panel sederhana.</p></div></div>
+      <div class="card"><div class="body"><h3>Custom domain?</h3><p class="meta">Bisa, hubungkan domain kamu.</p></div></div>
+      <div class="card"><div class="body"><h3>Bagaimana support?</h3><p class="meta">Panduan, chat bantuan, template siap pakai.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="section container" id="faq">
-    <h2 class="reveal">Pertanyaan Umum</h2>
-    <div class="features">
-      <div class="feature reveal"><h4>Perlu coding?</h4><p>Tidak. Semua template bisa diatur dari panel sederhana.</p></div>
-      <div class="feature reveal"><h4>Custom domain?</h4><p>Bisa. Hubungkan domain kamu atau gunakan subdomain TECRA.</p></div>
-      <div class="feature reveal"><h4>Bagaimana support?</h4><p>Panduan, chat bantuan, dan template siap pakai untuk start cepat.</p></div>
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <div style="font-weight:900;font-size:1.2rem;margin-bottom:8px;">TECRA</div>
+      <p>Berdiri 2025, TECRA membantu pasangan membagikan kabar bahagia lewat undangan digital elegan tanpa ribet.</p>
     </div>
-  </section>
+    <div><h4>Product</h4><p><a href="#template">Undangan Website</a></p><p><a href="#register">Gabung Mitra</a></p><p><a href="#">Wedding Planner</a></p></div>
+    <div><h4>Portofolio</h4><p><a href="#">Influencer</a></p><p><a href="#">Customer</a></p><p><a href="#">Custom Desain</a></p></div>
+    <div><h4>Social</h4><p><a href="#">Instagram</a></p><p><a href="#">TikTok</a></p><p><a href="#">Facebook</a></p></div>
+    <div><h4>Support</h4><p><a href="#">About Us</a></p><p><a href="#faq">Panduan Pengguna</a></p><p><a href="#">Privacy Policy</a></p><p><a href="#">Terms & Condition</a></p></div>
+  </div>
+  <div class="copyright">© 2025 All Right Reserved.</div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="foot">
-      <div class="logo"><strong>TECRA</strong><span style="color:#6b7280">&nbsp;(Temporary Craft)</span></div>
-      <div class="menu">
-        <a href="#templates">Template</a><a href="#pricing">Pricing</a><a href="#contact">Kontak</a><a href="#faq">FAQ</a>
-      </div>
-    </div>
-    <div class="container" style="padding-top:10px;color:#9ca3af;font-size:.9rem">© 2025 TECRA (Temporary Craft). All rights reserved.</div>
-  </footer>
+<script>
+  // mobile menu toggle
+  const btn=document.getElementById('menuBtn'),panel=document.getElementById('mobileMenu');
+  btn.addEventListener('click',()=>panel.classList.toggle('open'));
+  document.addEventListener('click',e=>{if(!panel.contains(e.target)&&!btn.contains(e.target))panel.classList.remove('open')});
 
-  <!-- JS: sticky nav, smooth scroll, reveal, carousel (swipe/keyboard/autoplay) -->
-  <script>
-    // Sticky nav shadow
-    const nav = document.getElementById('nav');
-    const onScroll = ()=> nav.classList.toggle('is-scrolled', window.scrollY > 8);
-    onScroll(); window.addEventListener('scroll', onScroll);
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1 && document.querySelector(id)){
-          e.preventDefault();
-          document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
-    });
-
-    // Reveal on view
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(el=>{
-        if(el.isIntersecting){ el.target.classList.add('is-visible'); io.unobserve(el.target); }
-      });
-    }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    // ===== Carousel (compact mobile + fit-in images) =====
-    (function(){
-      const track = document.getElementById('track');
-      const slides = Array.from(track.children);
-      const dotsWrap = document.getElementById('dots');
-      const prev = document.getElementById('prev');
-      const next = document.getElementById('next');
-
-      let index = 0;
-      let startX = 0, currentX = 0, isDown = false, isHover = false;
-      let autoplayTimer = null;
-
-      function slideWidth(){ return slides[0].getBoundingClientRect().width + 16; } // 16 = gap
-      function perView(){
-        const w = track.parentElement.clientWidth;
-        if (w >= 1280) return 4;
-        if (w >= 1024) return 3;
-        if (w >= 640)  return 2;
-        return 1; // mobile: 1 page, meski slide 62–72% agar terlihat "peek"
-      }
-      function maxIndex(){ return Math.max(0, slides.length - perView()); }
-      function clamp(){ index = Math.max(0, Math.min(index, maxIndex())); }
-
-      function update(){
-        const offset = -index * slideWidth();
-        track.style.transform = `translateX(${offset}px)`;
-        if(dotsWrap){
-          dotsWrap.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===index));
-        }
-        if(prev) prev.disabled = index===0;
-        if(next) next.disabled = index>=maxIndex();
-      }
-
-      function buildDots(){
-        if(!dotsWrap) return;
-        dotsWrap.innerHTML='';
-        for(let i=0;i<=maxIndex();i++){
-          const d=document.createElement('div');
-          d.className='dot';
-          d.addEventListener('click',()=>{ index=i; update(); restartAutoplay(); });
-          dotsWrap.appendChild(d);
-        }
-      }
-
-      // Arrow controls
-      if(next) next.addEventListener('click', ()=>{ index++; clamp(); update(); restartAutoplay(); });
-      if(prev) prev.addEventListener('click', ()=>{ index--; clamp(); update(); restartAutoplay(); });
-
-      // Keyboard
-      window.addEventListener('keydown', (e)=>{
-        if(e.key==='ArrowRight'){ index++; clamp(); update(); restartAutoplay(); }
-        if(e.key==='ArrowLeft'){ index--; clamp(); update(); restartAutoplay(); }
-      });
-
-      // Drag / Swipe
-      const viewport = track.parentElement;
-      viewport.addEventListener('pointerdown', (e)=>{ isDown=true; startX=e.clientX; currentX=startX; track.style.transition='none'; });
-      window.addEventListener('pointermove', (e)=>{
-        if(!isDown) return;
-        currentX=e.clientX;
-        const delta=currentX-startX;
-        const offset = (-index * slideWidth()) + delta;
-        track.style.transform = `translateX(${offset}px)`;
-      });
-      window.addEventListener('pointerup', ()=>{
-        if(!isDown) return;
-        isDown=false; track.style.transition='';
-        const delta = currentX - startX;
-        if(Math.abs(delta) > 60){ if(delta<0) index++; else index--; }
-        clamp(); update(); restartAutoplay();
-      });
-
-      // Autoplay (pause on hover/drag & reduced motion)
-      function autoplay(){
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        clearInterval(autoplayTimer);
-        autoplayTimer = setInterval(()=>{
-          if(isDown || isHover) return;
-          index = (index >= maxIndex()) ? 0 : index + 1;
-          update();
-        }, 4200);
-      }
-      function restartAutoplay(){ clearInterval(autoplayTimer); autoplay(); }
-      viewport.addEventListener('mouseenter', ()=>{ isHover=true; });
-      viewport.addEventListener('mouseleave', ()=>{ isHover=false; });
-
-      // Resize
-      window.addEventListener('resize', ()=>{ buildDots(); clamp(); update(); });
-
-      // Init
-      buildDots(); clamp(); update(); autoplay();
-    })();
-  </script>
+  // carousel
+  const track=document.getElementById('track'),slides=[...track.children],prev=document.getElementById('prev'),next=document.getElementById('next'),dots=document.getElementById('dots');
+  let index=0;
+  function slideWidth(){return slides[0].getBoundingClientRect().width+16}
+  function maxIndex(){return Math.max(0,slides.length-1)}
+  function update(){track.style.transform=`translateX(${-index*slideWidth()}px)`;dots.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===index))}
+  function buildDots(){dots.innerHTML='';for(let i=0;i<slides.length;i++){const d=document.createElement('div');d.className='dot';d.addEventListener('click',()=>{index=i;update()});dots.appendChild(d)}}
+  prev.onclick=()=>{index=Math.max(0,index-1);update()}
+  next.onclick=()=>{index=Math.min(maxIndex(),index+1);update()}
+  buildDots();update();
+</script>
 </body>
 </html>
-
